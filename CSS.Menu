@@ -102,3 +102,27 @@ margin-left:260px;
 padding:20px;
 
 }
+
+</div>
+
+<script>
+
+function tampilJam(){
+
+let sekarang=new Date();
+
+document.getElementById("clock").innerHTML=
+
+sekarang.toLocaleDateString("id-ID")+" | "+sekarang.toLocaleTimeString("id-ID");
+
+}
+
+setInterval(tampilJam,1000);
+
+tampilJam();
+
+</script>
+
+</body>
+
+</html>

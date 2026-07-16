@@ -1,24 +1,27 @@
-if(sessionStorage.getItem("login")!="true"){
-
-window.location="login.html";
-
-}
-
 document.addEventListener("DOMContentLoaded", function () {
+  // Normalize current path: remove trailing slash, treat root as / or /index.html equivalently
+  const currentPath = (window.location.pathname.replace(/\/$/, '')) || '/';
 
-let current = window.location.pathname.split("/").pop();
+  document.querySelectorAll(".menu-item").forEach(function (menu) {
+    const href = menu.getAttribute("href");
+    if (!href || href.startsWith('#') || href.startsWith('javascript:')) return;
 
-document.querySelectorAll(".menu-item").forEach(function(menu){
+    // Build an absolute URL from the href so we can reliably read its pathname
+    let linkPath;
+    try {
+      linkPath = new URL(href, window.location.origin).pathname.replace(/\/$/, '') || '/';
+    } catch (e) {
+      // If URL construction fails, skip this item
+      return;
+    }
 
-let href = menu.getAttribute("href");
-
-if(href === current){
-
-menu.classList.add("active");
-
-}
-
+    // Treat / and /index.html (or index.html) as equivalent
+    const indexEquivalents = new Set(['/', '/index.html', '/index.htm']);
+    if (linkPath === currentPath ||
+        (indexEquivalents.has(linkPath) && indexEquivalents.has(currentPath))) {
+      menu.classList.add("active");
+    } else {
+      menu.classList.remove("active");
+    }
+  });
 });
-
-});
-

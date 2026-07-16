@@ -1,65 +1,35 @@
-if(sessionStorage.getItem("login")!="true"){
+// Cek Login
+if (sessionStorage.getItem("login") !== "true") {
+    window.location.href = "login.html";
+}
 
-window.location="login.html";
+// Logout
+function logout() {
+
+    if (confirm("Apakah Anda yakin ingin logout?")) {
+
+        sessionStorage.removeItem("login");
+        sessionStorage.removeItem("nama");
+
+        window.location.href = "login.html";
+
+    }
 
 }
 
-#sidebar{
+// Aktifkan Menu
+document.addEventListener("DOMContentLoaded", function () {
 
-width:250px;
+    const currentPage = window.location.pathname.split("/").pop();
 
-background:#0b1f3a;
+    document.querySelectorAll("#sidebar a").forEach(function (menu) {
 
-min-height:100vh;
+        const href = menu.getAttribute("href");
 
-}
+        if (href === currentPage) {
+            menu.classList.add("active");
+        }
 
-#sidebar ul{
+    });
 
-list-style:none;
-
-padding:0;
-
-}
-
-#sidebar li{
-
-margin:5px;
-
-}
-
-#sidebar a{
-
-display:block;
-
-padding:14px 18px;
-
-color:white;
-
-text-decoration:none;
-
-border-radius:10px;
-
-transition:0.3s;
-
-}
-
-#sidebar a:hover{
-
-background:#1d4ed8;
-
-padding-left:25px;
-
-}
-
-#sidebar a.active{
-
-background:#00BCD4;
-
-color:white;
-
-font-weight:bold;
-
-box-shadow:0 0 15px #00BCD4;
-
-}
+});

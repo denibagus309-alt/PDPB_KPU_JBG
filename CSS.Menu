@@ -1,35 +1,83 @@
-// Cek Login
-if (sessionStorage.getItem("login") !== "true") {
-    window.location.href = "login.html";
-}
+/* Sidebar */
 
-// Logout
-function logout() {
+#sidebar{
 
-    if (confirm("Apakah Anda yakin ingin logout?")) {
-
-        sessionStorage.removeItem("login");
-        sessionStorage.removeItem("nama");
-
-        window.location.href = "login.html";
-
-    }
+width:250px;
+height:100vh;
+background:#0b1f3a;
+position:fixed;
+left:0;
+top:0;
+overflow-y:auto;
+box-shadow:3px 0 15px rgba(0,0,0,.3);
 
 }
 
-// Aktifkan Menu
-document.addEventListener("DOMContentLoaded", function () {
+#sidebar ul{
 
-    const currentPage = window.location.pathname.split("/").pop();
+list-style:none;
+padding:0;
+margin:20px 0;
 
-    document.querySelectorAll("#sidebar a").forEach(function (menu) {
+}
 
-        const href = menu.getAttribute("href");
+#sidebar li{
 
-        if (href === currentPage) {
-            menu.classList.add("active");
-        }
+margin:5px 10px;
 
-    });
+}
 
-});
+#sidebar a{
+
+display:flex;
+align-items:center;
+gap:12px;
+
+padding:14px 18px;
+
+color:#ffffff;
+
+text-decoration:none;
+
+border-radius:10px;
+
+transition:.3s;
+
+font-size:15px;
+
+}
+
+#sidebar a i{
+
+width:20px;
+text-align:center;
+
+}
+
+#sidebar a:hover{
+
+background:#1d4ed8;
+
+padding-left:28px;
+
+}
+
+#sidebar a.active{
+
+background:#00BCD4;
+
+color:white;
+
+font-weight:bold;
+
+box-shadow:0 0 15px rgba(0,188,212,.6);
+
+}
+
+.content{
+
+margin-left:260px;
+
+padding:20px;
+
+}

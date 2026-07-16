@@ -1,0 +1,17 @@
+document.addEventListener("DOMContentLoaded", function () {
+
+let current = window.location.pathname.split("/").pop();
+
+document.querySelectorAll(".menu-item").forEach(function(menu){
+
+let href = menu.getAttribute("href");
+
+if(href === current){
+
+menu.classList.add("active");
+
+}
+
+});
+
+});

@@ -1,3 +1,9 @@
+if(sessionStorage.getItem("login")!="true"){
+
+window.location="login.html";
+
+}
+
 #sidebar{
 
 width:250px;

@@ -1,1 +1,7 @@
+if(sessionStorage.getItem("login")!="true"){
+
+window.location="login.html";
+
+}
+
 body{font-family:Arial}
